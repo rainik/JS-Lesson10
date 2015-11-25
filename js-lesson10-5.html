@@ -11,7 +11,13 @@
          // Ваш код
 		 //Для страницы:
 		 //1. Поменяйте местами содержимое элементов <div>.
-		 
-      </script>
+		 var d = document.body.children;
+		 var temp;
+		 alert("Before changes");
+		 temp = d[0].innerHTML;
+		 d[0].innerHTML = d[1].innerHTML;
+		 d[1].innerHTML = temp;
+		 alert(d[0].innerHTML + d[1].innerHTML);		 
+	  </script>
    </body>
 </html>

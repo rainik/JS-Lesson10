@@ -1,36 +1,35 @@
 ﻿<!DOCTYPE html>
 <html>
    <head>
-      <title>Навигация в DOM</title>
+      <title>Свойства узлов</title>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    </head>
    <body>
-      <form name="authForm">
-         Логин:<br />
-         <input type="text" name="log" /><br />
-         Пароль:<br />
-         <input type="text" name="pass" /><br />
-         <button name="signIn">Войти</button>
-      </form>
+      Текстовый узел №1<br />
+      Текстовый узел №2
       <script>
-         // Ваш код
-		 var myFormByName = document.forms.authForm;
-		 var myFormByNum = document.forms[0];
-		 var firstInput = myFormByName.elements[0];
-		 var firstButton = myFormByName.elements.signIn;
-		 
-		 alert("myFormByName " + myFormByName);
-		 alert("myFormByNum " + myFormByNum);
-		 alert("firstInput " + firstInput);
-		 alert("firstButton" + firstButton);	 
-
-/*
-1. Получите форму по имени в переменную;
-2. Получите форму по номеру в переменную;
-3. Получите первый элемент <input> в переменную;
-4. Получите элемент <button> в переменную;
-5. Выведите значения переменных на экран.
-*/
+          // 1. Выведите на экран содержимое первого текстового узла;
+		 // 2. Выведите на экран содержимое последнего текстового узла.
+//variant 1
+		alert(document.body.firstChild.data);
+		alert(document.body.lastChild.previousSibling.data);
+		
+//variant 2		(для большего количества тектовых узлов)
+		var bodyNodes = document.body.childNodes;
+		arrTextNodes = [];
+		var textNode = 0;
+		for(var i = 0; i < bodyNodes.length ; i++) {
+			if (bodyNodes[i].nodeType == 3) {
+				arrTextNodes[textNode] = bodyNodes[i];
+                textNode++;
+			}
+		}
+		alert(textNode);
+		for (var i = 0; i < textNode ; i++) {
+		if (i == 0 || i == (textNode - 1)) {
+		alert(arrTextNodes[i].data);
+		}
+	}
       </script>
    </body>
 </html>
